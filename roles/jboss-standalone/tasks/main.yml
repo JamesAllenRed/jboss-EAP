@@ -73,7 +73,7 @@
 - name: Download War File
   get_url:
     url: https://github.com/utherp0/oseTestWARs/blob/master/ContainerView.war?raw=true
-    dest: /home
+    dest: /home/ec2-user/
     mode: 0440
 
 - name: Deploy WAR file
