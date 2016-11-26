@@ -75,6 +75,7 @@
     url: https://github.com/utherp0/oseTestWARs/blob/master/ContainerView.war?raw=true
     dest: /home/ec2-user/
     mode: 0440
+  sudo: yes
 
 - name: Deploy WAR file
   command: sudo cp /home/ec2-user/ContainerView.war /usr/share/jboss-as/standalone/deployments/ContainerView.war
