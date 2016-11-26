@@ -77,5 +77,5 @@
     mode: 0440
 
 - name: Deploy WAR file
-  command: sudo mv /home/ContainerView.war /usr/share/jboss-as/standalone/deployments/
+  command: sudo mv /home/ec2-user/ContainerView.war /usr/share/jboss-as/standalone/deployments/
 
