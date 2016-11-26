@@ -70,10 +70,12 @@
   - "{{ https_port }}/tcp"
   sudo: yes
 
-- name: Deploy War File
+- name: Download War File
   get_url:
     url: https://github.com/utherp0/oseTestWARs/blob/master/ContainerView.war?raw=true
-    dest: /usr/share/jboss-as/standalone/deployments/
+    dest: /home
     mode: 0440
-  sudo: yes
+
+- name: Deploy WAR file
+  command: sudo mv /home/ContainerView.war /usr/share/jboss-as/standalone/deployments/
 
