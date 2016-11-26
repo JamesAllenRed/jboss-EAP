@@ -77,6 +77,6 @@
     mode: 0440
 
 - name: Deploy WAR file
-  copy: src=/home/ec2-user/ContainerView.war dest=/usr/share/jboss-as/standalone/deployments/ContainerView.war owner=ec2-user mode=0644
-  sudo: yes
+  command: sudo cp /home/ec2-user/ContainerView.war /usr/share/jboss-as/standalone/deployments/ContainerView.war
+
 
