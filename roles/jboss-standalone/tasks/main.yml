@@ -73,7 +73,6 @@
 - name: Deploy War File
   get_url:
     url: https://github.com/utherp0/oseTestWARs/blob/master/ContainerView.war?raw=true
-    dest: $JBOSS_HOME/standalone/deployments/
+    dest: /usr/share/jboss-as/standalone/deployments/
     mode: 0440
-  sudo: yes
 
