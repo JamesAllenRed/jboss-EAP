@@ -72,12 +72,12 @@
 
 - name: Download War File
   get_url:
-    url: https://github.com/utherp0/oseTestWARs/blob/master/ContainerView.war?raw=true
+    url: https://github.com/JamesAllenRed/os-rest-example-master/blob/master/target/jboss-helloworld-rs.war
     dest: /home/ec2-user/
     mode: 0440
   sudo: yes
 
 - name: Deploy WAR file
-  command: sudo cp /home/ec2-user/ContainerView.war /usr/share/jboss-as/standalone/deployments/ContainerView.war
+  command: sudo cp /home/ec2-user/jboss-helloworld-rs.war /usr/share/jboss-as/standalone/deployments/jboss-helloworld-rs.war
 
 
