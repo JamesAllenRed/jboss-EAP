@@ -19,30 +19,38 @@
   # Rename the dir to avoid encoding the version in the init script
 - name: Rename install directory
   command: chdir=/usr/share /bin/mv jboss-as-7.1.1.Final jboss-as creates=/usr/share/jboss-as
+  sudo: yes
 
 - name: Copying standalone.xml configuration file
   template: src=standalone.xml dest=/usr/share/jboss-as/standalone/configuration/
   notify: restart jboss
+  sudo: yes
 
 - name: Add group "jboss"
   group: name=jboss
+  sudo: yes
 
 - name: Add user "jboss"
   user: name=jboss group=jboss home=/usr/share/jboss-as
+  sudo: yes
 
 - name: Change ownership of JBoss installation
   file: path=/usr/share/jboss-as/ owner=jboss group=jboss state=directory recurse=yes
+  sudo: yes
 
 - name: Copy the init script
   copy: src=jboss-as-standalone.sh dest=/etc/init.d/jboss mode=0755
+  sudo: yes
 
 - name: Enable JBoss to be started at boot
   service: name=jboss enabled=yes state=started
+  sudo: yes
 
 - name: deploy iptables rules
   template: src=iptables-save dest=/etc/sysconfig/iptables
   when: ansible_distribution_major_version != "7" 
   notify: restart iptables
+  sudo: yes
 
 - name: Ensure that firewalld is installed
   yum: name=firewalld state=present
@@ -52,6 +60,7 @@
 - name: Ensure that firewalld is started
   service: name=firewalld state=started
   when: ansible_distribution_major_version == "7" 
+  sudo: yes
 
 - name: deploy firewalld rules
   firewalld: immediate=yes port={{ item }} state=enabled permanent=yes
@@ -59,4 +68,5 @@
   with_items:
   - "{{ http_port }}/tcp"
   - "{{ https_port }}/tcp"
+  sudo: yes
 
